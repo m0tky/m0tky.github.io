@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="莫听雨">
+
+
+
+
+
+<title>Hexo&amp;github搭建静态博客 | m0tky</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">m0tky&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">m0tky&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hexo&amp;github搭建静态博客</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">莫听雨</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 20, 2020&nbsp;&nbsp;8:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h2><h3 id="1-安装NodeJs"><a href="#1-安装NodeJs" class="headerlink" title="1.安装NodeJs"></a>1.安装NodeJs</h3><ul>
+<li>下载最新版 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJs</a><br>PS:这里选择NodeJs的LTS长期支持版即可。</li>
+<li>在下载完成之后，双击node.msi进行安装</li>
+<li>完成所有安装之后通过如下命令检测是否安装成功<br>node -v 显示，表示已经完成NodeJs的安装<br>npm -v 显示，表示完成npm的安装<br>换源:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cythia/p/10985080.html">https://www.cnblogs.com/cythia/p/10985080.html</a></li>
+</ul>
+<h3 id="2-搭建github博客"><a href="#2-搭建github博客" class="headerlink" title="2.搭建github博客"></a>2.搭建github博客</h3><p>在自己的github上新建一个名字为：自己用户名.github.io的仓库。</p>
+<h3 id="3-配置SSH-KEY"><a href="#3-配置SSH-KEY" class="headerlink" title="3.配置SSH-KEY"></a>3.配置SSH-KEY</h3><p>通过使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+<p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容<br>在自己的github的个人设置界面：SSH and GPG keys -&gt; New SSH key：</p>
+<p>导入key中，title可以是随意填，保存即可。</p>
+<h3 id="4-配置Hexo"><a href="#4-配置Hexo" class="headerlink" title="4.配置Hexo"></a>4.配置Hexo</h3><p>通过使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g #生成</span><br><span class="line">hexo s #启动服务</span><br><span class="line">hexo d #上传博客文章</span><br></pre></td></tr></table></figure>
+<p>选择自己喜欢的主题 通过git将自己喜欢的主题克隆到themes目录下。</p>
+<p>我这里使用简约风格的<a target="_blank" rel="noopener" href="https://github.com/Siricee/hexo-theme-Chic">Chic主题</a></p>
+<p>配置参考Chic的官方文档即可。</p>
+<p>一切都准备就绪，goodgame！</p>
+<h2 id="二、主题基本配置"><a href="#二、主题基本配置" class="headerlink" title="二、主题基本配置"></a>二、主题基本配置</h2><h3 id="1-配置主题"><a href="#1-配置主题" class="headerlink" title="1.配置主题"></a>1.配置主题</h3><p>找到主题文件夹下的_config.yml文件，根据自己需求更改，可参考Chic的github说明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"># Header</span><br><span class="line">navname: m0tky&#39;s Blog</span><br><span class="line"></span><br><span class="line"># navigatior items</span><br><span class="line">nav:</span><br><span class="line">  Posts: &#x2F;archives</span><br><span class="line">  Categories: &#x2F;category</span><br><span class="line">  Tags: &#x2F;tag</span><br><span class="line">  About: &#x2F;about</span><br><span class="line"></span><br><span class="line"># favicon</span><br><span class="line">favicon: &#x2F;favicon.ico</span><br><span class="line"></span><br><span class="line"># Profile</span><br><span class="line">nickname: 莫听雨</span><br><span class="line"></span><br><span class="line">### this variable is MarkDown form.</span><br><span class="line">description: 苟有恒,何必三更眠五更起&lt;br&gt;最无益,莫过一日曝十日寒</span><br><span class="line">avatar: &#x2F;image&#x2F;avatar.jpeg</span><br><span class="line"></span><br><span class="line"># main menu navigation</span><br><span class="line">## links key words should not be changed.</span><br><span class="line">## Complete url after key words.</span><br><span class="line">## Unused key can be commented out.</span><br><span class="line">links:</span><br><span class="line">  Blog: &#x2F;archives</span><br><span class="line">  # Category:</span><br><span class="line">  # Tags: </span><br><span class="line">  # Link:</span><br><span class="line">  # Resume:</span><br><span class="line">  # Publish:</span><br><span class="line">  # Trophy:</span><br><span class="line">  # Gallery:</span><br><span class="line">  # RSS:</span><br><span class="line">  # AliPay:</span><br><span class="line">  # ZhiHu: https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;sirice</span><br><span class="line">  # LinkedIn:</span><br><span class="line">  # FaceBook:</span><br><span class="line">  # Twitter:</span><br><span class="line">  # Skype:</span><br><span class="line">  # CodeSandBox:</span><br><span class="line">  # CodePen:</span><br><span class="line">  # Sketch:</span><br><span class="line">  # Gitlab:</span><br><span class="line">  # Dribbble:</span><br><span class="line">  # Instagram:</span><br><span class="line">  # Reddit:</span><br><span class="line">  # YouTube:</span><br><span class="line">  QQ:</span><br><span class="line">  # Weibo:</span><br><span class="line">  WeChat:</span><br><span class="line">  Github: https:&#x2F;&#x2F;github.com&#x2F;m0tky</span><br><span class="line"></span><br><span class="line"># how links show: you have 2 choice--text or icon.</span><br><span class="line">links_text_enable: false</span><br><span class="line">links_icon_enable: true</span><br><span class="line"></span><br><span class="line"># Post page</span><br><span class="line">## Post_meta</span><br><span class="line">post_meta_enable: true</span><br><span class="line"></span><br><span class="line">post_author_enable: true</span><br><span class="line">post_date_enable: true</span><br><span class="line">post_category_enable: true</span><br><span class="line">## Post copyright</span><br><span class="line">post_copyright_enable: true</span><br><span class="line"></span><br><span class="line">post_copyright_author_enable: true</span><br><span class="line">post_copyright_permalink_enable: true</span><br><span class="line">post_copyright_license_enable: true</span><br><span class="line">post_copyright_license_text: Copyright (c) 2020 &lt;a href&#x3D;&quot;http:&#x2F;&#x2F;creativecommons.org&#x2F;licenses&#x2F;by-nc&#x2F;4.0&#x2F;&quot;&gt;CC-BY-NC-4.0&lt;&#x2F;a&gt; LICENSE</span><br><span class="line">post_copyright_slogan_enable: true</span><br><span class="line">post_copyright_slogan_text: Do you believe in &lt;strong&gt;DESTINY&lt;&#x2F;strong&gt;?</span><br><span class="line">## toc</span><br><span class="line">post_toc_enable: true</span><br><span class="line"></span><br><span class="line"># Page</span><br><span class="line">page_title_enable: true</span><br><span class="line"></span><br><span class="line"># Date &#x2F; Time format</span><br><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http:&#x2F;&#x2F;momentjs.com&#x2F;docs&#x2F;#&#x2F;displaying&#x2F;format&#x2F;</span><br><span class="line">date_format: MMMM D, YYYY</span><br><span class="line">time_format: H:mm:ss</span><br><span class="line"></span><br><span class="line"># stylesheets loaded in the &lt;head&gt;</span><br><span class="line">stylesheets:</span><br><span class="line">  - &#x2F;css&#x2F;style.css</span><br><span class="line"></span><br><span class="line"># scripts loaded in the end of the body</span><br><span class="line">scripts:</span><br><span class="line">  - &#x2F;js&#x2F;script.js</span><br><span class="line">  - &#x2F;js&#x2F;tocbot.min.js</span><br><span class="line">    # tscanlin&#x2F;tocbot: Build a table of contents from headings in an HTML document.</span><br><span class="line">    # https:&#x2F;&#x2F;github.com&#x2F;tscanlin&#x2F;tocbot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># plugin functions</span><br><span class="line">## Mathjax: Math Formula Support</span><br><span class="line">## https:&#x2F;&#x2F;www.mathjax.org</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  import: demand # global or demand</span><br><span class="line">  ## global: all pages will load mathjax,this will degrade performance and some grammers may be parsed wrong.</span><br><span class="line">  ## demand: Recommend option,if your post need fomula, you can declare &#39;mathjax: true&#39; in Front-matter</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置发布设置"><a href="#2-配置发布设置" class="headerlink" title="2.配置发布设置"></a>2.配置发布设置</h3><p>如果你一切都配置好了，发布上传很容易，一句hexo d就搞定，当然关键还是你要把所有东西配置好。<br>首先，ssh key肯定要配置好。<br>其次，配置_config.yml中有关deploy的部分：<br>正确写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>错误写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: github</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">后面一种写法是hexo2.x的写法，现在已经不行了，无论是哪种写法，此时直接执行hexo d的话一般会报如下错误：</span><br></pre></td></tr></table></figure>
+<p>Deployer not found: github 或者 Deployer not found: git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原因是还需要安装一个插件：</span><br></pre></td></tr></table></figure>
+<p>npm install hexo-deployer-git –save</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">其它命令不确定，部署这个命令一定要用git bash，否则会提示Permission denied (publickey).</span><br><span class="line"></span><br><span class="line">打开你的git bash，输入hexo d就会将本次有改动的代码全部提交，没有改动的不会：</span><br><span class="line"></span><br><span class="line">### 3.写博客</span><br><span class="line"></span><br><span class="line">定位到我们的hexo根目录，执行命令：</span><br></pre></td></tr></table></figure>
+<p>hexo new ‘my-first-blog’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo会帮我们在_posts下生成相关md文件：</span><br><span class="line">我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：</span><br><span class="line">当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</span><br><span class="line">一般完整格式如下：</span><br></pre></td></tr></table></figure>
+<hr>
+<p>title: postName #文章页面上的显示名称，一般是中文<br>date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改<br>categories: 默认分类 #分类<br>tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格<br>description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</p>
+<hr>
+<p>正文</p>
+<pre><code>
+### 4.Q&amp;A
+
+#### hexo new page &#39;postName&#39;命令和hexo new &#39;postName&#39;有什么区别呢？
+
+hexo new page &quot;my-second-blog&quot;
+生成如下：
+最终部署时生成：hexo\public\my-second-blog\index.html，但是它不会作为文章出现在博文目录。
+
+####  如何让博文列表不显示全部内容
+默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？
+
+答案是在合适的位置加上```&lt;!--more--&gt;```即可。
+
+#### 参考连接
+[npm换源](https://www.cnblogs.com/cythia/p/10985080.html)
+[hexo搭建博客](https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html)
+[Chic配置](https://github.com/Siricee/hexo-theme-Chic)</code></pre>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>莫听雨</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/archivers/2020-09-20/1">http://example.com/archivers/2020-09-20/1</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%86%99%E4%BD%9C/"># 写作</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 莫听雨 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
