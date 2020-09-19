@@ -221,35 +221,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
 <p>错误写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: github</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">后面一种写法是hexo2.x的写法，现在已经不行了，无论是哪种写法，此时直接执行hexo d的话一般会报如下错误：</span><br></pre></td></tr></table></figure>
-<p>Deployer not found: github 或者 Deployer not found: git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原因是还需要安装一个插件：</span><br></pre></td></tr></table></figure>
-<p>npm install hexo-deployer-git –save</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">其它命令不确定，部署这个命令一定要用git bash，否则会提示Permission denied (publickey).</span><br><span class="line"></span><br><span class="line">打开你的git bash，输入hexo d就会将本次有改动的代码全部提交，没有改动的不会：</span><br><span class="line"></span><br><span class="line">### 3.写博客</span><br><span class="line"></span><br><span class="line">定位到我们的hexo根目录，执行命令：</span><br></pre></td></tr></table></figure>
-<p>hexo new ‘my-first-blog’</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo会帮我们在_posts下生成相关md文件：</span><br><span class="line">我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：</span><br><span class="line">当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</span><br><span class="line">一般完整格式如下：</span><br></pre></td></tr></table></figure>
-<hr>
-<p>title: postName #文章页面上的显示名称，一般是中文<br>date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改<br>categories: 默认分类 #分类<br>tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格<br>description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</p>
-<hr>
-<p>正文</p>
-<pre><code>
-### 4.Q&amp;A
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: github</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-#### hexo new page &#39;postName&#39;命令和hexo new &#39;postName&#39;有什么区别呢？
+<p>后面一种写法是hexo2.x的写法，现在已经不行了，无论是哪种写法，此时直接执行hexo d的话一般会报如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Deployer not found: github 或者 Deployer not found: git</span><br></pre></td></tr></table></figure>
+<p>原因是还需要安装一个插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>其它命令不确定，部署这个命令一定要用git bash，否则会提示Permission denied (publickey).</p>
+<p>打开你的git bash，输入hexo d就会将本次有改动的代码全部提交，没有改动的不会：</p>
+<h3 id="3-写博客"><a href="#3-写博客" class="headerlink" title="3.写博客"></a>3.写博客</h3><p>定位到我们的hexo根目录，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#39;my-first-blog&#39;</span><br></pre></td></tr></table></figure>
+<p>hexo会帮我们在_posts下生成相关md文件：<br>我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：<br>当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。<br>一般完整格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories: 默认分类 #分类</span><br><span class="line">tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格</span><br><span class="line">description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
 
-hexo new page &quot;my-second-blog&quot;
-生成如下：
-最终部署时生成：hexo\public\my-second-blog\index.html，但是它不会作为文章出现在博文目录。
 
-####  如何让博文列表不显示全部内容
-默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？
 
-答案是在合适的位置加上```&lt;!--more--&gt;```即可。
 
-#### 参考连接
-[npm换源](https://www.cnblogs.com/cythia/p/10985080.html)
-[hexo搭建博客](https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html)
-[Chic配置](https://github.com/Siricee/hexo-theme-Chic)</code></pre>
+
+
+
+<h3 id="4-Q-amp-A"><a href="#4-Q-amp-A" class="headerlink" title="4.Q&amp;A"></a>4.Q&amp;A</h3><h4 id="hexo-new-page-‘postName’命令和hexo-new-‘postName’有什么区别呢？"><a href="#hexo-new-page-‘postName’命令和hexo-new-‘postName’有什么区别呢？" class="headerlink" title="hexo new page ‘postName’命令和hexo new ‘postName’有什么区别呢？"></a>hexo new page ‘postName’命令和hexo new ‘postName’有什么区别呢？</h4><p>hexo new page “my-second-blog”<br>生成如下：<br>最终部署时生成：hexo\public\my-second-blog\index.html，但是它不会作为文章出现在博文目录。</p>
+<h4 id="如何让博文列表不显示全部内容"><a href="#如何让博文列表不显示全部内容" class="headerlink" title="如何让博文列表不显示全部内容"></a>如何让博文列表不显示全部内容</h4><p>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p>
+<p>答案是在合适的位置加上<code>&lt;!--more--&gt;</code>即可。</p>
+<h4 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cythia/p/10985080.html">npm换源</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">hexo搭建博客</a><br><a target="_blank" rel="noopener" href="https://github.com/Siricee/hexo-theme-Chic">Chic配置</a></p>
 
         </div>
 
@@ -262,21 +256,16 @@ hexo new page &quot;my-second-blog&quot;
                     </p>
                 
                 
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="http://example.com/archivers/2020-09-20/1">http://example.com/archivers/2020-09-20/1</a></span>
-                    </p>
-                
                 
                     <p class="copyright-item">
                         <span>License:</span>
-                        <span>Copyright (c) 2020 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                        <span>Copyright (c) 2020 <a href="">莫听雨的小书屋</a> 📜</span>
                     </p>
                 
                 
                      <p class="copyright-item">
                          <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                         <span>旧书不厌百回读，熟读深思子自知。</span>
                      </p>
                 
 
@@ -301,6 +290,8 @@ hexo new page &quot;my-second-blog&quot;
         </section>
         <section class="post-nav">
             
+            
+            <a class="next" rel="next" href="/2020/09/18/hello-world/">Hello World</a>
             
         </section>
 
